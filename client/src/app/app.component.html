@@ -1,0 +1,21 @@
+<!-- TopBar -->
+<mat-toolbar color="primary">
+  <div>
+    {{name}}
+  </div>
+  <div class="ms-5">
+    <a mat-button color="warn" [routerLink]="'/'"> Domů </a>
+    <a mat-button color="warn" [routerLink]="'/predict-issue'"> Predikce incidentu </a>
+    <a mat-button color="warn" [routerLink]="'/customer-effort'"> Predikce úsilí </a>
+  </div>
+</mat-toolbar>
+
+<!-- Content -->
+<div class="container">
+  <router-outlet></router-outlet>
+</div>
+
+<!-- Footer -->
+<footer>
+  <!-- TODO -->
+</footer>

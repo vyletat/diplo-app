@@ -1,0 +1,33 @@
+version: '1'
+
+services:
+  dp.server:
+    image: ${DOCKER_REGISTRY-}dpserver
+    networks:                       # specify the IP address of the database
+      db-network:
+        ipv4_address: 10.6.0.6
+    build:
+      context: server
+      dockerfile: Dockerfile
+    ports:
+        - 4444:4444
+
+  dp.client:
+    image: ${DOCKER_REGISTRY-}dpclient
+    networks:                       # specify the IP address of the database
+      db-network:
+        ipv4_address: 10.6.0.7
+    build:
+        context: client
+        dockerfile: Dockerfile
+    ports:
+        - 5080:80
+    depends_on:
+      - dp.server
+
+networks:
+  db-network:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 10.6.0.0/16

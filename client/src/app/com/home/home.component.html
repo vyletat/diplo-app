@@ -1,0 +1,38 @@
+<div class="my-5">
+  <div class="fs-3 mb-3">Domovská stránka</div>
+  <p class="text-secondary">
+    Tato aplikace vznikla v rámci diplomové práce na téma Analýza nákladů při support a maintenance. Autorem je Bc.
+    Tomáš Vyleta, 2023.
+  </p>
+</div>
+
+<mat-divider></mat-divider>
+
+<div class="my-5">
+  <!-- Predikce incidentu -->
+  <div class="my-3">
+    <div class="fs-5 mb-2">Predikce incidentu</div>
+    <p class="text-secondary">
+      Slouží pro zadávání hodnot nazávislých proměnných pomocí formuláře a následného odeslání na backend, který pro
+      zadané nezávislé proměnné pomocí naučených modelů (LDA, QDA, RF a NN) klasifikuje do jedné z kategorií závislé
+      proměnné.</p>
+    <div class="d-grid">
+      <button mat-flat-button color="warn" type="button" [routerLink]="'/predict-issue'">
+        Predikce incidentu
+      </button>
+    </div>
+  </div>
+
+  <!-- Predikce úsilí -->
+  <div class="my-3">
+    <div class="fs-5 mb-2">Predikce úsilí</div>
+    <p class="text-secondary">
+      Slouží pro navolení anonymizovaného zákazníka z rozbalovacího seznamu a náslené predikce celkového času pro
+      zvoleného zákazníka. Poskytuje přehled skutečně stráveného času a stráveného času predikovaného metodami. </p>
+    <div class="d-grid">
+      <button mat-flat-button color="warn" type="button" [routerLink]="'/customer-effort'">
+        Predikce úsilí
+      </button>
+    </div>
+  </div>
+</div>

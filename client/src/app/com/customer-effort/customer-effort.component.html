@@ -1,0 +1,225 @@
+<div class="d-flex justify-content-between align-items-center">
+  <p class="fs-3 my-5">Predikce úsilí</p>
+</div>
+
+<mat-divider></mat-divider>
+
+<div class="my-3">
+  <!-- Form -->
+  <form [formGroup]="customerForm" (ngSubmit)="showEffort()">
+    <div class="row">
+      <div class="col-8">
+        <!-- Customer -->
+        <mat-form-field class="w-100" appearance="outline">
+          <mat-label>Customer</mat-label>
+          <mat-select formControlName="customer">
+            <mat-option *ngFor="let value of customersResponse" [value]="value.key">{{value.key}}
+              (četnost: {{value.counts}})
+            </mat-option>
+          </mat-select>
+          <mat-error *ngIf="customerForm.controls['customer'].hasError('required')">Vstup je povinný</mat-error>
+        </mat-form-field>
+      </div>
+      <div class="col-4">
+        <!-- Buttons -->
+        <div class="d-flex my-3 justify-content-center">
+          <div class="col-auto">
+            <button [disabled]="!customerForm.valid" mat-flat-button color="warn" type="submit">
+              <mat-icon>check</mat-icon>
+              Vybrat
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+
+  <!-- NOT EMPTY -->
+  <div *ngIf="customerIssueResponse != undefined" class="py-3">
+    <div class="row">
+      <div class="col-6">
+        <div class="fs-4 my-4">
+          Naměřené hodnoty
+        </div>
+        <mat-card class="mb-3">
+          <mat-card-header>
+            <mat-card-title>Skutečná hodnota</mat-card-title>
+            <mat-card-subtitle>Skutečná hodnota projektu z data setu</mat-card-subtitle>
+          </mat-card-header>
+          <mat-card-content>
+            Skutečná metoda je {{customerIssueResponse.realSpentTime | number:'1.1-4'}} h
+          </mat-card-content>
+        </mat-card>
+
+        <mat-card class="mb-3">
+          <mat-card-header>
+            <mat-card-title>Rozdíly</mat-card-title>
+            <mat-card-subtitle>Rozdíl mezi skutečnou a predikovanou hodnotou</mat-card-subtitle>
+          </mat-card-header>
+          <mat-card-content>
+            <div class="d-flex flex-column">
+              <div>
+                LDA: {{difference(customerIssueResponse.realSpentTime, customerIssueResponse.yPredLdaMean) | number:'1.1-4'}}
+                h
+              </div>
+              <div>
+                QDA: {{difference(customerIssueResponse.realSpentTime, customerIssueResponse.yPredQdaMean) | number:'1.1-4'}}
+                h
+              </div>
+              <div>
+                RF: {{difference(customerIssueResponse.realSpentTime, customerIssueResponse.yPredRfMean) | number:'1.1-4'}}
+                h
+              </div>
+              <div>
+                NN: {{difference(customerIssueResponse.realSpentTime, customerIssueResponse.yPredNnMean) | number:'1.1-4'}}
+                h
+              </div>
+            </div>
+          </mat-card-content>
+        </mat-card>
+      </div>
+      <div class="col-6">
+        <div class="fs-4 my-4">
+          Predikované hodnoty
+        </div>
+        <mat-card class="mb-3">
+          <mat-card-header>
+            <mat-card-title>LDA</mat-card-title>
+            <mat-card-subtitle>Lineární diskriminační analýza</mat-card-subtitle>
+          </mat-card-header>
+          <mat-card-content>
+            Předpověď metody je {{customerIssueResponse.yPredLdaMean}} h
+          </mat-card-content>
+        </mat-card>
+
+        <mat-card class="mb-3">
+          <mat-card-header>
+            <mat-card-title>QDA</mat-card-title>
+            <mat-card-subtitle>Kvadratická diskriminační analýza</mat-card-subtitle>
+          </mat-card-header>
+          <mat-card-content>
+            Předpověď metody je {{customerIssueResponse.yPredQdaMean}} h
+          </mat-card-content>
+        </mat-card>
+
+        <mat-card class="mb-3">
+          <mat-card-header>
+            <mat-card-title>RF</mat-card-title>
+            <mat-card-subtitle>Náhodný les</mat-card-subtitle>
+          </mat-card-header>
+          <mat-card-content>
+            Předpověď metody je {{customerIssueResponse.yPredRfMean}} h
+          </mat-card-content>
+        </mat-card>
+
+        <mat-card class="mb-3">
+          <mat-card-header>
+            <mat-card-title>NN</mat-card-title>
+            <mat-card-subtitle>Neuronová síť</mat-card-subtitle>
+          </mat-card-header>
+          <mat-card-content>
+            Předpověď metody je {{customerIssueResponse.yPredNnMean}} h
+          </mat-card-content>
+        </mat-card>
+      </div>
+    </div>
+
+    <!-- Table -->
+    <ng-container *ngIf="customerIssueTableData.length > 0 else noRequest">
+      <div class="fs-4 my-4">
+        Incidenty
+      </div>
+
+      <div class="mat-elevation-z8 my-3">
+        <!-- Table -->
+        <table mat-table [dataSource]="dataSource" class="w-100">
+
+          <!-- Status column -->
+          <ng-container matColumnDef="status">
+            <th mat-header-cell *matHeaderCellDef> {{parameterProperties.status.name}} </th>
+            <td mat-cell *matCellDef="let element"> {{element.status}} </td>
+          </ng-container>
+
+          <!-- Priority column -->
+          <ng-container matColumnDef="priority">
+            <th mat-header-cell *matHeaderCellDef> {{parameterProperties.priority.name}} </th>
+            <td mat-cell *matCellDef="let element"> {{element.priority}} </td>
+          </ng-container>
+
+          <!-- Current Support Team column -->
+          <ng-container matColumnDef="currentSupportTeam">
+            <th mat-header-cell *matHeaderCellDef> {{parameterProperties.currentSupportTeam.name}} </th>
+            <td mat-cell *matCellDef="let element"> {{element.currentSupportTeam}} </td>
+          </ng-container>
+
+          <!-- Symbol Column -->
+          <ng-container matColumnDef="currentlyAffectedNumbersOfMachines">
+            <th mat-header-cell *matHeaderCellDef> {{parameterProperties.currentlyAffectedNumbersOfMachines.name}} </th>
+            <td mat-cell *matCellDef="let element"> {{element.currentlyAffectedNumbersOfMachines}} </td>
+          </ng-container>
+
+          <!-- Symbol Column -->
+          <ng-container matColumnDef="frequencyOfOccurence">
+            <th mat-header-cell *matHeaderCellDef> {{parameterProperties.frequencyOfOccurence.name}} </th>
+            <td mat-cell *matCellDef="let element"> {{element.frequencyOfOccurence}} </td>
+          </ng-container>
+
+          <!-- Symbol Column -->
+          <ng-container matColumnDef="impact">
+            <th mat-header-cell *matHeaderCellDef> {{parameterProperties.impact.name}} </th>
+            <td mat-cell *matCellDef="let element"> {{element.impact}} </td>
+          </ng-container>
+
+          <!-- Symbol Column -->
+          <ng-container matColumnDef="projectPhase">
+            <th mat-header-cell *matHeaderCellDef> {{parameterProperties.projectPhase.name}} </th>
+            <td mat-cell *matCellDef="let element"> {{element.projectPhase}} </td>
+          </ng-container>
+
+          <!-- Symbol Column -->
+          <ng-container matColumnDef="region">
+            <th mat-header-cell *matHeaderCellDef> {{parameterProperties.region.name}} </th>
+            <td mat-cell *matCellDef="let element"> {{element.region}} </td>
+          </ng-container>
+
+          <!-- Symbol Column -->
+          <ng-container matColumnDef="reproducibility">
+            <th mat-header-cell *matHeaderCellDef> {{parameterProperties.reproducibility.name}} </th>
+            <td mat-cell *matCellDef="let element"> {{element.reproducibility}} </td>
+          </ng-container>
+
+          <!-- Symbol Column -->
+          <ng-container matColumnDef="urgency">
+            <th mat-header-cell *matHeaderCellDef> {{parameterProperties.urgency.name}} </th>
+            <td mat-cell *matCellDef="let element"> {{element.urgency}} </td>
+          </ng-container>
+
+          <!-- Symbol Column -->
+          <ng-container matColumnDef="isBusinessPartner">
+            <th mat-header-cell *matHeaderCellDef> {{parameterProperties.isBusinessPartner.name}} </th>
+            <td mat-cell *matCellDef="let element"> {{element.isBusinessPartner}} </td>
+          </ng-container>
+
+          <!-- TODO: page, max 10 -->
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+          <!-- Row shown when there is no matching data. -->
+          <tr class="mat-row" *matNoDataRow>
+            <td class="mat-cell" colspan="4"></td>
+          </tr>
+        </table>
+      </div>
+    </ng-container>
+  </div>
+
+  <!-- EMPTY-->
+  <ng-template #noRequest>
+    <div class="col-8">
+      <div class="d-flex justify-content-center fs-4">
+        <mat-icon>arrow_upward</mat-icon>
+        Vyplňte formulář a pošlete požadavek
+      </div>
+    </div>
+  </ng-template>
+</div>

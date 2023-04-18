@@ -1,0 +1,213 @@
+{
+	"info": {
+		"_postman_id": "cded6a99-0df1-4c40-b9e5-1880e2114bbd",
+		"name": "diplo-app",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "predict",
+			"item": [
+				{
+					"name": "issue-all",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"Current_Support_Team\": 1,\r\n    \"Currently_Affected_Numbers_of_Machines\": 1,\r\n    \"Impact\": 1,\r\n    \"Status\": 1,\r\n    \"Priority\": 1,\r\n    \"Project_Phase\": 1,\r\n    \"Region\": 1,\r\n    \"Reproducibility\": 1,\r\n    \"Urgency\": 1,\r\n    \"Is_business_partner\": 1,\r\n    \"Frequency_of_occurence\": 1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "127.0.0.1:4444/predictions/issue-all",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "4444",
+							"path": [
+								"predictions",
+								"issue-all"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "issue-lda",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"issue\": {\r\n        \"Current_Support_Team\": 1,\r\n        \"Currently_Affected_Numbers_of_Machines\": 1,\r\n        \"Impact\": 1,\r\n        \"Status\": 1,\r\n        \"Priority\": 1,\r\n        \"Project_Phase\": 1,\r\n        \"Region\": 1,\r\n        \"Reproducibility\": 1,\r\n        \"Urgency\": 1,\r\n        \"Is_business_partner\": 1,\r\n        \"Frequency_of_occurence\": 1\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "127.0.0.1:4444/predictions/issue-lda",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "4444",
+							"path": [
+								"predictions",
+								"issue-lda"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "issue-rf",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"issue\": {\r\n        \"Current_Support_Team\": 1,\r\n        \"Currently_Affected_Numbers_of_Machines\": 1,\r\n        \"Impact\": 1,\r\n        \"Status\": 1,\r\n        \"Priority\": 1,\r\n        \"Project_Phase\": 1,\r\n        \"Region\": 1,\r\n        \"Reproducibility\": 1,\r\n        \"Urgency\": 1,\r\n        \"Is_business_partner\": 1,\r\n        \"Frequency_of_occurence\": 1\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "127.0.0.1:4444/predictions/issue-rf",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "4444",
+							"path": [
+								"predictions",
+								"issue-rf"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "issue-nn",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"issue\": {\r\n        \"Current_Support_Team\": 1,\r\n        \"Currently_Affected_Numbers_of_Machines\": 1,\r\n        \"Impact\": 1,\r\n        \"Status\": 1,\r\n        \"Priority\": 1,\r\n        \"Project_Phase\": 1,\r\n        \"Region\": 1,\r\n        \"Reproducibility\": 1,\r\n        \"Urgency\": 1,\r\n        \"Is_business_partner\": 1,\r\n        \"Frequency_of_occurence\": 1\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "127.0.0.1:4444/predictions/issue-nn",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "4444",
+							"path": [
+								"predictions",
+								"issue-nn"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "similar-issues",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"Current_Support_Team\": 1,\r\n    \"Currently_Affected_Numbers_of_Machines\": 1,\r\n    \"Impact\": 1,\r\n    \"Status\": 1,\r\n    \"Priority\": 1,\r\n    \"Project_Phase\": 1,\r\n    \"Region\": 1,\r\n    \"Reproducibility\": 1,\r\n    \"Urgency\": 1,\r\n    \"Is_business_partner\": 1,\r\n    \"Frequency_of_occurence\": 1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "127.0.0.1:4444/predictions/similar-issues",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "4444",
+							"path": [
+								"predictions",
+								"similar-issues"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "effort",
+			"item": [
+				{
+					"name": "customer",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"customer\": 795\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "127.0.0.1:4444/effort/customer",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "4444",
+							"path": [
+								"effort",
+								"customer"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "all-customers",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

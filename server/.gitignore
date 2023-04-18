@@ -1,0 +1,7 @@
+.idea
+.git
+
+# Python
+/venv
+
+/data/*

@@ -1,0 +1,238 @@
+<div class="d-flex justify-content-between align-items-center">
+  <p class="fs-3 my-5">Predikce incidentu</p>
+</div>
+
+<mat-divider></mat-divider>
+
+<div class="row align-items-center my-3">
+  <div class="col-6">
+    <!-- Form -->
+    <form [formGroup]="issueForm" (ngSubmit)="classifyIssue()">
+
+      <!-- Status -->
+      <mat-form-field class="w-100" appearance="outline">
+        <mat-label>{{parameterProperties.status.name}}</mat-label>
+        <mat-select formControlName="status">
+          <mat-option *ngFor="let category of parameterProperties.status.categories; let i = index"
+                      [value]="category.value">{{category.name}}</mat-option>
+        </mat-select>
+        <mat-error *ngIf="issueForm.controls['status'].hasError('required')">Vstup je povinný</mat-error>
+      </mat-form-field>
+
+      <!-- Priority -->
+      <mat-form-field class="w-100" appearance="outline">
+        <mat-label>{{parameterProperties.priority.name}}</mat-label>
+        <mat-select formControlName="priority">
+          <mat-option *ngFor="let category of parameterProperties.priority.categories; let i = index"
+                      [value]="category.value">{{category.name}}</mat-option>
+        </mat-select>
+        <mat-error *ngIf="issueForm.controls['priority'].hasError('required')">Vstup je povinný</mat-error>
+      </mat-form-field>
+
+      <!-- Current Support Team -->
+      <mat-form-field class="w-100" appearance="outline">
+        <mat-label>{{parameterProperties.currentSupportTeam.name}}</mat-label>
+        <mat-select formControlName="currentSupportTeam">
+          <mat-option *ngFor="let category of parameterProperties.currentSupportTeam.categories; let i = index"
+                      [value]="category.value">{{category.name}}</mat-option>
+        </mat-select>
+        <mat-error *ngIf="issueForm.controls['currentSupportTeam'].hasError('required')">Vstup je povinný</mat-error>
+      </mat-form-field>
+
+      <!-- Currently Affected Numbers Of Machines -->
+      <mat-form-field class="w-100" appearance="outline">
+        <mat-label>{{parameterProperties.currentlyAffectedNumbersOfMachines.name}}</mat-label>
+        <mat-select formControlName="currentlyAffectedNumbersOfMachines">
+          <mat-option
+            *ngFor="let category of parameterProperties.currentlyAffectedNumbersOfMachines.categories; let i = index"
+            [value]="category.value">{{category.name}}</mat-option>
+        </mat-select>
+        <mat-error *ngIf="issueForm.controls['currentlyAffectedNumbersOfMachines'].hasError('required')">Vstup je
+          povinný
+        </mat-error>
+      </mat-form-field>
+
+      <!-- Frequency Of Occurence -->
+      <mat-form-field class="w-100" appearance="outline">
+        <mat-label>{{parameterProperties.frequencyOfOccurence.name}}</mat-label>
+        <mat-select formControlName="frequencyOfOccurence">
+          <mat-option *ngFor="let category of parameterProperties.frequencyOfOccurence.categories; let i = index"
+                      [value]="category.value">{{category.name}}</mat-option>
+        </mat-select>
+        <mat-error *ngIf="issueForm.controls['frequencyOfOccurence'].hasError('required')">Vstup je povinný</mat-error>
+      </mat-form-field>
+
+      <!-- Impact -->
+      <mat-form-field class="w-100" appearance="outline">
+        <mat-label>{{parameterProperties.impact.name}}</mat-label>
+        <mat-select formControlName="impact">
+          <mat-option *ngFor="let category of parameterProperties.impact.categories; let i = index"
+                      [value]="category.value">{{category.name}}</mat-option>
+        </mat-select>
+        <mat-error *ngIf="issueForm.controls['impact'].hasError('required')">Vstup je povinný</mat-error>
+      </mat-form-field>
+
+      <!-- Project Phase -->
+      <mat-form-field class="w-100" appearance="outline">
+        <mat-label>{{parameterProperties.projectPhase.name}}</mat-label>
+        <mat-select formControlName="projectPhase">
+          <mat-option *ngFor="let category of parameterProperties.projectPhase.categories; let i = index"
+                      [value]="category.value">{{category.name}}</mat-option>
+        </mat-select>
+        <mat-error *ngIf="issueForm.controls['projectPhase'].hasError('required')">Vstup je povinný</mat-error>
+      </mat-form-field>
+
+      <!-- Region -->
+      <mat-form-field class="w-100" appearance="outline">
+        <mat-label>{{parameterProperties.region.name}}</mat-label>
+        <mat-select formControlName="region">
+          <mat-option *ngFor="let category of parameterProperties.region.categories; let i = index"
+                      [value]="category.value">{{category.name}}</mat-option>
+        </mat-select>
+        <mat-error *ngIf="issueForm.controls['region'].hasError('required')">Vstup je povinný</mat-error>
+      </mat-form-field>
+
+      <!-- Reproducibility -->
+      <mat-form-field class="w-100" appearance="outline">
+        <mat-label>{{parameterProperties.reproducibility.name}}</mat-label>
+        <mat-select formControlName="reproducibility">
+          <mat-option *ngFor="let category of parameterProperties.reproducibility.categories; let i = index"
+                      [value]="category.value">{{category.name}}</mat-option>
+        </mat-select>
+        <mat-error *ngIf="issueForm.controls['reproducibility'].hasError('required')">Vstup je povinný</mat-error>
+      </mat-form-field>
+
+      <!-- Urgency -->
+      <mat-form-field class="w-100" appearance="outline">
+        <mat-label>{{parameterProperties.urgency.name}}</mat-label>
+        <mat-select formControlName="urgency">
+          <mat-option *ngFor="let category of parameterProperties.urgency.categories; let i = index"
+                      [value]="category.value">{{category.name}}</mat-option>
+        </mat-select>
+        <mat-error *ngIf="issueForm.controls['urgency'].hasError('required')">Vstup je povinný</mat-error>
+      </mat-form-field>
+
+      <!-- Is Business Partner -->
+      <mat-form-field class="w-100" appearance="outline">
+        <mat-label>{{parameterProperties.isBusinessPartner.name}}</mat-label>
+        <mat-select formControlName="isBusinessPartner">
+          <mat-option *ngFor="let category of parameterProperties.isBusinessPartner.categories; let i = index"
+                      [value]="category.value">{{category.name}}</mat-option>
+        </mat-select>
+        <mat-error *ngIf="issueForm.controls['isBusinessPartner'].hasError('required')">Vstup je povinný</mat-error>
+      </mat-form-field>
+
+      <!-- Buttons -->
+      <div class="d-flex my-3 justify-content-center">
+        <div class="col-auto">
+          <button [disabled]="!issueForm.valid" mat-flat-button color="warn" type="submit">
+            <mat-icon>check</mat-icon>
+            Klasifikuj
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+
+  <!-- NOT EMPTY -->
+  <div *ngIf="predictAllIssuesResponse != undefined else noRequest" class="col-6">
+    <div class="fs-4 my-3">
+      Predikované hodnoty
+    </div>
+
+    <div>
+      <mat-card class="mb-3">
+        <mat-card-header>
+          <mat-card-title>LDA</mat-card-title>
+          <mat-card-subtitle>Lineární diskriminační analýza</mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content>
+          Předpověď metody je {{predictAllIssuesResponse.yPredLda - 1}} - {{predictAllIssuesResponse.yPredLda}} MD
+        </mat-card-content>
+      </mat-card>
+
+      <mat-card class="mb-3">
+        <mat-card-header>
+          <mat-card-title>QDA</mat-card-title>
+          <mat-card-subtitle>Kvadratická diskriminační analýza</mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content>
+          Předpověď metody je {{predictAllIssuesResponse.yPredQda - 1}} - {{predictAllIssuesResponse.yPredQda}} MD
+        </mat-card-content>
+      </mat-card>
+
+      <mat-card class="mb-3">
+        <mat-card-header>
+          <mat-card-title>RF</mat-card-title>
+          <mat-card-subtitle>Náhodný les</mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content>
+          Předpověď metody je {{predictAllIssuesResponse.yPredRf - 1}} - {{predictAllIssuesResponse.yPredRf}} MD
+        </mat-card-content>
+      </mat-card>
+
+      <mat-card class="mb-3">
+        <mat-card-header>
+          <mat-card-title>NN</mat-card-title>
+          <mat-card-subtitle>Neuronová síť</mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content>
+          Předpověď metody je {{predictAllIssuesResponse.yPredNn - 1}} - {{predictAllIssuesResponse.yPredNn}} MD
+        </mat-card-content>
+      </mat-card>
+    </div>
+
+    <mat-divider></mat-divider>
+
+    <ng-container *ngIf="!noSimilarIssues else noTable">
+      <div class="fs-4 my-3">
+        Podobné incidenty
+      </div>
+
+      <!-- Table -->
+      <table mat-table [dataSource]="dataSource" class="w-100 mat-elevation-z8">
+
+        <!-- Spent time column -->
+        <ng-container matColumnDef="spentTime">
+          <th mat-header-cell *matHeaderCellDef> Spent time</th>
+          <td mat-cell *matCellDef="let element"> {{element.spentTime}} </td>
+        </ng-container>
+
+        <!-- Customer column -->
+        <ng-container matColumnDef="customer">
+          <th mat-header-cell *matHeaderCellDef> Customer</th>
+          <td mat-cell *matCellDef="let element"> {{element.customer}} </td>
+        </ng-container>
+
+        <!-- Product column -->
+        <ng-container matColumnDef="product">
+          <th mat-header-cell *matHeaderCellDef> Product</th>
+          <td mat-cell *matCellDef="let element"> {{element.product}} </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+      </table>
+    </ng-container>
+
+    <ng-template #noTable>
+      <div class="d-flex justify-content-center fs-4">
+        <mat-icon>arrow_back</mat-icon>
+        Bohužel se nenašly žádné stejné incidenty
+      </div>
+    </ng-template>
+  </div>
+
+  <!-- EMPTY -->
+  <ng-template #noRequest>
+    <div class="col-6">
+      <div class="d-flex justify-content-center fs-4">
+        <mat-icon>arrow_back</mat-icon>
+        Vyplňte formulář a pošlete požadavek
+      </div>
+    </div>
+  </ng-template>
+
+</div>
+

@@ -1,0 +1,6 @@
+<div [ngSwitch]="code" class="d-flex justify-content-center my-5">
+  <img *ngSwitchCase="null" src="assets/http/404.jpg">
+  <img *ngSwitchCase="'404'" src="assets/http/404.jpg">
+  <img *ngSwitchCase="'500'" src="assets/http/500.jpg">
+  <img *ngSwitchCase="'504'" src="assets/http/504.jpg">
+</div>
