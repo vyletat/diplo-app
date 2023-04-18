@@ -1,4 +1,4 @@
-# Aplikace k diplomové práci - klirnt/frontend
+# Aplikace k diplomové práci - klient/frontend
 
 ## Technologie
 
