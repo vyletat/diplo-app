@@ -4,7 +4,7 @@ Tato webová alikace je vyvíjena k diplomové práci na téma "Analýza náklad
 
 ## Autor
 
-Tomáš Vyleta <br>
+Bc. Tomáš Vyleta <br>
 2022/2023 <br>
 Projektový a procesní management <br>
 Katedra podnikové ekonomiky a managementu (KPM) <br>
@@ -26,4 +26,4 @@ Poděbradova 2842/1, <br>
 
 Instalace jednotlivých aplikací (klienta a serveru) je popsaná v README ve složce příslušné aplikace. 
 
-Copyright (c) 2023 Tomáš Vyleta, MIT Licence
+Copyright (c) 2023 Bc. Tomáš Vyleta, MIT Licence
