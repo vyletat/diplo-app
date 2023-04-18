@@ -1,4 +1,4 @@
-# Webová aplikace k bakalářské práci
+# Webová aplikace k diplomové práci
 
 Tato webová alikace je vyvíjena k diplomové práci na téma "Analýza nákladů při support a maintenance". Aplikace slouží pro zadání incidentů, klasifikaci jejich úsilí a predikci úsilí na projekt (zákazníka).
 
