@@ -3,9 +3,9 @@ from sklearn.model_selection import train_test_split
 from app.service.data_service import get_io
 
 # Inicializace LDA modelu
-lda_model = LinearDiscriminantAnalysis(n_components=1)
+lda_model = LinearDiscriminantAnalysis(n_components=2)
 test_size = 0.3
-random_state = 3639
+random_state = 7103
 
 
 def train_lda():

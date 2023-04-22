@@ -5,7 +5,7 @@ from app.service.data_service import get_io
 # Inicializace QDA modelu
 qda_model = QuadraticDiscriminantAnalysis()
 test_size = 0.3
-random_state = 3639
+random_state = 7103
 
 
 def train_qda():

@@ -5,7 +5,7 @@ from sklearn.metrics import accuracy_score
 from app.service.data_service import get_io
 
 # Definice modelu
-rf_model = RandomForestClassifier(n_estimators=100, random_state=3639)
+rf_model = RandomForestClassifier(n_estimators=151, random_state=597)
 
 
 def train_rf():
