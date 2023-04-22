@@ -1,27 +1,28 @@
-# DiploAppFrontend
+# Aplikace k diplomové práci - klient/frontend
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.3.0.
+## Technologie
 
-## Development server
+Angular - https://angular.io
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+## Prerekvizity
 
-## Code scaffolding
+Node.js: Angular je postaven na platformě Node.js, takže první prerekvizitou je mít Node.js nainstalovaný na svém počítači. Můžete si ho stáhnout z oficiálního webu Node.js (https://nodejs.org/).
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+Aplikace se spustí samostatně, ale ke správné funkcionalitě potřebuje mít spuštěný i server.
 
-## Build
+## Spuštění na lokálním zařízení
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+Spusťte `npm install` pro nainstalování závislostí aplikace.
 
-## Running unit tests
+Spusťte `ng serve` pro dev server. Přejděte na adresu `http://localhost:4200/`. Aplikace se automaticky znovu načte, pokud změníte některý ze zdrojových souborů.
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+Dokumentace se vygeneruje a spustí příkazem `compodoc -p tsconfig.doc.json -s`.
 
-## Running end-to-end tests
+## Nasazení
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+Spusťte `ng build` pro sestavení projektu. Artefakty sestavení budou uloženy v adresáři `dist/`.
 
-## Further help
+Aplikace také obsahuje Docker soubor pro nasazení v Dockeru.
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+
+Copyright (c) 2020 Tomáš Vyleta, MIT Licence
